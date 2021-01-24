@@ -1,11 +1,18 @@
+import { Provider } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 import Login from './components/login/Login';
-// import Form from './components/login/FormAuth';
+import MainPage from './components/main/MainPage';
+
 function App() {
 
   return (
     <>
-<Login />
-{/* <Form /> */}
+      <Switch>
+
+          <Route path='/main' component={MainPage} />
+          <Route path='/' component={Login} />
+     
+      </Switch>
     </>
   );
 }
