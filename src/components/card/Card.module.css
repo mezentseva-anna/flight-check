@@ -1,0 +1,73 @@
+.img {
+  background-image: url('./img/plane\ 4.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 60px;
+  width: 15%;
+}
+
+.rgba{
+  background: rgba(0, 119, 255, 0.05);
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.information {
+  height: 60px;
+  width: 60%;
+  padding-bottom: 7%;
+}
+
+.price {
+  height: 60px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text {
+  color: #424242;
+  font-size: 17px;
+  margin: 0;
+}
+
+.date{
+  color: #878787;
+  font-size: 14px;
+  margin: 0;
+}
+
+.heart {
+  background-image: url('./img/Vector.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 100px;
+  width: 90%
+}
+
+.heart:hover {
+  background-image: url('./img/klipartz.com.png');
+  background-size: 12%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 100px;
+  width: 90%
+}
+
+.priceText{
+  color: #878787;
+  font-size: 11px;
+  margin: 0;
+}
+
+.priceValue {
+  font-size: 17px;
+  color: #000;
+  margin: 0;
+  background-position: center;
+}

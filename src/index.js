@@ -15,8 +15,6 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 store.subscribe(() => {
   const state = store.getState();
-  console.log('work');
-  // window.localStorage.setItem('state', JSON.stringify(state));
 })
 
 sagaMiddleware.run(rootSaga)
