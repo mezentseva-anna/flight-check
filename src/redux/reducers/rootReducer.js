@@ -1,8 +1,18 @@
-import { combineReducers } from 'redux';
+import { applyMiddleware, combineReducers } from 'redux';
 import { favoritesReducer } from './favoritesReducer';
 import { userReducer } from './userReducer';
 
-export const rootReducer = combineReducers({
+const appReducer = combineReducers({
   user: userReducer,
   favorites: favoritesReducer
 })
+
+export const rootReducer = (state,action)=>{
+  switch(action.type){
+    case 'RESET':
+      localStorage.clear();
+      return {user:null,favorites:null}
+    default:
+      return appReducer(state,action)
+  }
+}

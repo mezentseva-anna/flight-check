@@ -1,4 +1,4 @@
-import { ADD_FAVORITES, ADD_USER, LOGOUT } from './actionTypes';
+import { ADD_FAVORITES, ADD_USER, LOGOUT, START_FETCH, FETCH_FLIGHT } from './actionTypes';
 
 export const addUserAC = (payload) => {
   return {
@@ -20,8 +20,14 @@ export const logoutUserAC = () => {
   }
 }
 
-export const logoutFavoritesAC = () => {
-  return {
-    type: LOGOUT,
-  }
+// export const logoutFavoritesAC = () => {
+//   return { type: LOGOUT }
+// }
+
+export const startFetch = (payload) => {
+  return { type: START_FETCH, payload }
+}
+
+export const fetchFlightAC = () => {
+  return { type: FETCH_FLIGHT }
 }
