@@ -1,14 +1,17 @@
 import { ListGroup } from 'react-bootstrap';
 import Card from '../card/Card';
+import { useSelector } from 'react-redux';
 
 export default function List() {
+
+  const flights = useSelector(state => state.flights)
+
   return (
     <div>
       <ListGroup variant="flush">
-        <ListGroup.Item><Card /></ListGroup.Item>
-        <ListGroup.Item><Card /></ListGroup.Item>
-        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+        {flights.map(el =>
+          <ListGroup.Item><Card key={el.id} data={el.data} id={el.id} el={el}/></ListGroup.Item>
+        )}
       </ListGroup>
     </div>
   )

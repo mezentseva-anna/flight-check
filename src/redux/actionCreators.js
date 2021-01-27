@@ -35,6 +35,6 @@ export const addFlightAC = (payload) => {
   }
 }
 
-export const deleteFavoriteAC = () => {
-  return { type: DELETE_FAVORITE }
+export const deleteFavoriteAC = (payload) => {
+  return { type: DELETE_FAVORITE,payload }
 }

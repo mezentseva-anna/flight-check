@@ -35,7 +35,7 @@ const fetchFlight = async () => {
     }
   })
   const dataJSON = await data.json()
-  // window.localStorage.setItem('state', JSON.stringify({ flight: dataJSON }));
+  window.localStorage.setItem('flights', JSON.stringify({ flight: dataJSON }));
   return dataJSON
 }
 
@@ -43,7 +43,14 @@ function* flightWorker() {
   const data = yield call(fetchFlight)
   console.log('worker2');
   console.log(data);
-  yield put(addFlightAC(data))
+  const arr = [];
+for (let i = 0; i < 15; i += 1) {
+  arr.push({
+    data,
+    id: i
+  })
+}
+  yield put(addFlightAC(arr))
 }
 
 function* flightWathcer() {

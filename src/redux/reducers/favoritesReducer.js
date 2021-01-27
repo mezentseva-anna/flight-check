@@ -12,7 +12,8 @@ export const favoritesReducer = (state = preloadedState, action) => {
       return [...state, action.payload];
 
       case DELETE_FAVORITE:
-        return state.splice(state.length-1, 1);
+      // const copy = [...state].filter(el=>el.id!==action.payload);
+      return [...state.filter(el=>el!==action.payload)]
 
     default:
       return state

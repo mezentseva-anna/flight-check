@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import style from './MainPage.module.css';
 import List from '../list/List';
+import CarouselComponent from '../carousel/Carousel';
 
 
 export default function MainPage() {
@@ -13,7 +14,6 @@ export default function MainPage() {
   const history = useHistory();
 
   useEffect(() => {
-    console.log('hello');
     dispatch(fetchFlightAC())
 
   }, [dispatch])
@@ -27,6 +27,7 @@ export default function MainPage() {
           history.push('/');
         }}>Выйти</button>
       <Container className={`${style.main}`} style={{ position: 'relative', height: '100%' }}>
+        {/* <CarouselComponent /> */}
         <p style={{ color: '424242', fontSize: '17px', paddingBottom: '1%' }}>Добавлено в избранное: {count.length} рейсов</p>
         <List />
       </Container>
