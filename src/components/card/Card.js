@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addFavoriteAC, deleteFavoriteAC } from '../../redux/actionCreators';
+import { addFavoriteAC, changeFlagAC, deleteFavoriteAC } from '../../redux/actionCreators';
 import style from './Card.module.css';
 
-export default function Card({ id,data }) {
+export default function Card({ id, data, flag }) {
   console.log(data);
 
-  const [condition, setCondition] = useState(false);
   const dispatch = useDispatch();
 
   // const flights = useSelector(state => state.flights)
@@ -25,10 +24,11 @@ export default function Card({ id,data }) {
   // console.log('>>>',condition);
   // },[condition])
   const favorites = () => {
-     setCondition(() => !condition);
+    //  setCondition(() => !condition)
+    dispatch(changeFlagAC(id))
     // console.log('0000',condition);
-    if(!condition)dispatch(addFavoriteAC(id))
-    
+    if (!flag) dispatch(addFavoriteAC(id))
+
     else dispatch(deleteFavoriteAC(id))
 
 
@@ -46,19 +46,18 @@ export default function Card({ id,data }) {
 
   return (
     <div className='d-flex justify-content-center align-items-center' >
-      <div className={`${style.img}`}>
-        <div className={`${style.rgba}`}></div>
+        <div className={style.img}>
       </div>
-      <div className={`${style.information}`}>
-        <p className={`${style.text}`}>{data && data.Places[1].CityName} ({data && data.Places[1].IataCode}) <img src="/img/Group4.png" alt="arrow" />
+      <div className={style.information}>
+        <p className={style.text}>{data && data.Places[1].CityName} ({data && data.Places[1].IataCode}) <img src="/img/Group4.png" alt="arrow" />
           {data && data.Places[0].CityName} ({data && data.Places[0].IataCode})</p>
-        <p className={`${style.date}`}>{day} {month}, {year} — {time} </p>
-        <p className={`${style.date}`}>{data && data.Carriers[0].Name}</p>
+        <p className={style.date}>{day} {month}, {year} — {time} </p>
+        <p className={style.date}>{data && data.Carriers[0].Name}</p>
       </div>
-      <div onClick={favorites} className={`${style.price}`}>
-        <div className={`${style.heart}`}></div>
+      <div onClick={favorites} className={style.price}>
+        <div className={!flag ? style.heart : style.heart_colored}></div>
         <div style={{ textAlign: 'center' }}>
-          <p className={`${style.priceText}`}>Price: <span className={`${style.priceValue}`}>{data && data.Quotes[0].MinPrice}</span></p>
+          <p className={style.priceText}>Price: <span className={style.priceValue}> {data && data.Quotes[0].MinPrice} {data.Currencies[0].Symbol}</span></p>
         </div>
       </div>
     </div>

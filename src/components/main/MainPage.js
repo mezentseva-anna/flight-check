@@ -13,24 +13,26 @@ export default function MainPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(fetchFlightAC())
+// const flights = localStorage.getItem('flights', )
 
+  useEffect(() => {
+
+    dispatch(fetchFlightAC())
   }, [dispatch])
 
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center' style={{ height: '100vh' }}>
-        <button onClick={() => {
+    <div className="container">
+    <div className='d-flex flex-column justify-content-center align-items-end' >
+        <button style={{margin:'3vh 0'}} onClick={() => {
           dispatch({ type: 'RESET' });
-          // dispatch(logoutFavoritesAC());
           console.log('hi');
           history.push('/');
         }}>Выйти</button>
-      <Container className={`${style.main}`} style={{ position: 'relative', height: '100%' }}>
-        {/* <CarouselComponent /> */}
-        <p style={{ color: '424242', fontSize: '17px', paddingBottom: '1%' }}>Добавлено в избранное: {count.length} рейсов</p>
+      <Container className={style.main} style={{maxHeight:'70vh',overflowY:'scroll'}}>
+        <p style={{ marginTop:'3vh', color: '424242', fontSize: '17px', paddingBottom: '1%' }}>Добавлено в избранное: <span style={{color:'#1157A7',fontWeight:'bold'}}>{count.length}</span> рейсов</p>
         <List />
       </Container>
+    </div>
     </div>
   )
 }

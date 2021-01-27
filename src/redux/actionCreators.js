@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, ADD_USER, LOGOUT, START_FETCH, FETCH_FLIGHT, ADD_FLIGHT, DELETE_FAVORITE } from './actionTypes';
+import { ADD_FAVORITE, ADD_USER, LOGOUT, START_FETCH, FETCH_FLIGHT, ADD_FLIGHT, DELETE_FAVORITE, CHANGE_FLAG } from './actionTypes';
 
 export const addUserAC = (payload) => {
   return {
@@ -37,4 +37,11 @@ export const addFlightAC = (payload) => {
 
 export const deleteFavoriteAC = (payload) => {
   return { type: DELETE_FAVORITE,payload }
+}
+
+export const changeFlagAC = (payload) => {
+  return {
+    type: CHANGE_FLAG,
+    payload
+  }
 }

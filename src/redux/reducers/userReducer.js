@@ -1,15 +1,16 @@
 import { ADD_USER, LOGOUT } from '../actionTypes';
 
-const state = JSON.parse(window.localStorage.getItem('state'));
+const state = JSON.parse(window.localStorage.getItem('user'));
 let preloadedState = {};
 
-if (state) preloadedState = state.user;
+if (state) preloadedState = state;
 
 export const userReducer = (state = preloadedState, action) => {
 
   switch (action.type) {
 
     case ADD_USER:
+      
       return action.payload;
 
     case LOGOUT:

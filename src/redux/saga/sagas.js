@@ -7,7 +7,7 @@ const fetchUser = async (payload) => {
   const userJSON = await user.json();
   console.log(userJSON.email, userJSON.address.city);
   if (userJSON.email === payload.email && userJSON.address.city === payload.password) {
-    window.localStorage.setItem('state', JSON.stringify({ user: userJSON, favorites: []}));
+    window.localStorage.setItem('user', JSON.stringify(userJSON));
     return userJSON
   }
 }
@@ -35,22 +35,26 @@ const fetchFlight = async () => {
     }
   })
   const dataJSON = await data.json()
-  window.localStorage.setItem('flights', JSON.stringify({ flight: dataJSON }));
+  // if (!JSON.parse(localStorage.getItem('flights')))
+  // window.localStorage.setItem('flights', JSON.stringify({ flight: dataJSON }));
   return dataJSON
 }
 
 function* flightWorker() {
+  if(!JSON.parse(localStorage.getItem('flights'))){
   const data = yield call(fetchFlight)
-  console.log('worker2');
-  console.log(data);
   const arr = [];
 for (let i = 0; i < 15; i += 1) {
   arr.push({
     data,
-    id: i
+    id: i,
+    flag: false
   })
 }
-  yield put(addFlightAC(arr))
+window.localStorage.setItem('flights', JSON.stringify( arr ));
+
+  yield put(addFlightAC(arr))}
+  yield put(addFlightAC(JSON.parse(localStorage.getItem('flights'))))
 }
 
 function* flightWathcer() {
