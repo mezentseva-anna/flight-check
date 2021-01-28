@@ -9,8 +9,10 @@ function UseAuth() {
     useEffect(() => {
         if (!!user) {
             history.push('/main');
+
         } else {
             history.push('/');
+
         }
     }, [user]);
     return user
