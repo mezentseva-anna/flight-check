@@ -1,18 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { addFavoriteAC, changeFlagAC, deleteFavoriteAC } from '../../redux/actionCreators';
+import { transformDate } from '../../utils/variables';
 import style from './Card.module.css';
 
 export default function Card({ id, data, flag }) {
-
   const dispatch = useDispatch();
-
   let year, month, day, time
 
   if (data) {
-    year = new Date(data.Quotes[0].QuoteDateTime).toLocaleString('en', { year: 'numeric' });
-    month = new Date(data.Quotes[0].QuoteDateTime).toLocaleString('en', { month: 'long' });
-    day = new Date(data.Quotes[0].QuoteDateTime).toLocaleString('en', { day: 'numeric' });
-    time = new Date(data.Quotes[0].QuoteDateTime).toLocaleTimeString().slice(0, -3);;
+    year = transformDate(data, { year: 'numeric' });
+    month = transformDate(data, { month: 'long' });
+    day = transformDate(data, { day: 'numeric' });
+    time = new Date(data.Quotes[0].QuoteDateTime).toLocaleTimeString().slice(0, -3);
   }
 
   const favorites = () => {
@@ -33,7 +32,7 @@ export default function Card({ id, data, flag }) {
       </div>
       <div onClick={favorites} className={style.price}>
         <div className={!flag ? style.heart : style.heart_colored}></div>
-        <div style={{ textAlign: 'center' }}>
+        <div className={style.cost}>
           <p className={style.priceText}>Price: <span className={style.priceValue}>{data && data.Quotes[0].MinPrice} {data.Currencies[0].Symbol}</span></p>
         </div>
       </div>

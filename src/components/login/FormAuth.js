@@ -1,28 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import style from './Login.module.css';
 import { Button, Form } from 'react-bootstrap';
 import { startFetch } from '../../redux/actionCreators';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import useAuth from '../useAuth/useAuth';
 import * as yup from 'yup';
 
 export default function FormAuth() {
 
   const [isUser, setIsUser] = useState(true);
-
+  const user = useAuth();
   const dispatch = useDispatch();
-  const history = useHistory();
-  const user = useSelector((state) => state.user?.email ? state.user : null);
-  useEffect(() => {
-    if (user) {
-      history.push('/main');
-    }
-  }, [user]);
+
   const submitHandler = (e) => {
     e.preventDefault();
-    const email = e.target.children[1].children[1].value;
-    const password = e.target.children[2].children[1].value;
+    const email = 'Sincere@april.biz';
+    const password = 'Gwenborough';
     dispatch(startFetch({ email, password }));
     user ? setIsUser(true) : setIsUser(false);
   };
@@ -79,7 +73,7 @@ export default function FormAuth() {
                   <p className={style.errorMsg}>{errors.password}</p>}
                 {!isUser ? <p className={style.errorMsg}>Неверный email или пароль!</p> : null}
               </Form.Group>
-              <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+              <div className={style.btn}>
               <Button variant="primary" type="submit">
                 Войти
 							</Button>

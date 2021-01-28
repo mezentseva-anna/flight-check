@@ -2,26 +2,30 @@
   box-shadow: 0 0 15px rgba(88, 88, 88, 0.5);
   margin: 5% 0;
   border-radius: 10px;
+  max-height: 70vh;
+  max-width: 40vw;
 }
 
-.main::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+
+.scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
 }
 
-.main::-webkit-scrollbar
-{
-	width: 6px;
-	background-color: #F5F5F5;
+.scroll::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
 }
 
-.main::-webkit-scrollbar-thumb
-{
-	background-color: #1157A7;
-	border: 2px solid #555555;
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #1157A7;
+  border: 2px solid #555555;
 }
 
+.scroll {
+overflow-y: scroll;
+max-height: 50vh;
+}
 
 .logout {
   margin-top: 3vh;
@@ -31,16 +35,54 @@
 }
 
 .logout:hover {
-  text-shadow: rgba(173, 173, 207, 0.582) 1px 1px 0,  rgba(173, 173, 207, 0.582) -1px -1px 0, 
-  rgba(173, 173, 207, 0.582) -1px 1px 0,  rgba(173, 173, 207, 0.582) 1px -1px 0;
+  text-shadow: rgba(173, 173, 207, 0.582) 1px 1px 0, rgba(173, 173, 207, 0.582) -1px -1px 0,
+    rgba(173, 173, 207, 0.582) -1px 1px 0, rgba(173, 173, 207, 0.582) 1px -1px 0;
 }
 
 .logoutImg {
   margin: 0 0.5vw;
 }
 
-.header{
+.header {
   color: #424242;
   font-size: 32px;
+  max-width: 60%;
+  margin-bottom: 0;
 }
 
+.date {
+  color: #1157A7;
+  font-size: 25px;
+  margin-bottom: 0;
+}
+
+.dateContainer {
+  display: flex;
+  align-items: center;
+}
+
+.calendar {
+  margin-left: 5px;
+}
+
+.containerHead {
+margin-top: 4vh;
+display: flex;
+justify-content: space-around;
+}
+
+.arrow {
+margin: 0 0.5vw;
+}
+
+.favorites {
+margin-top: 3vh;
+color: #424242;
+font-size: 17px;
+padding-bottom: 1%;
+}
+
+.count{
+color: #1157A7;
+font-weight: bold;
+}

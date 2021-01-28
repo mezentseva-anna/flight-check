@@ -5,11 +5,18 @@ import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import style from './MainPage.module.css';
 import List from '../list/List';
+import useAuth from '../useAuth/useAuth';
+import { dateToString } from '../../utils/variables';
 
 export default function MainPage() {
   const count = useSelector(state => state.favorites)
   const dispatch = useDispatch();
+  const user = useAuth();
   const history = useHistory();
+  const date = new Date(Date.now());
+  const day = dateToString(date, { day: 'numeric' });
+  const month = dateToString(date, { month: 'long' });
+  const year = dateToString(date, { year: 'numeric' })
 
   useEffect(() => {
 
@@ -24,14 +31,26 @@ export default function MainPage() {
       }}>Выйти
         <img className={style.logoutImg} src="/img/logout.png" alt="logout" />
       </p>
-      <Container className={style.main} style={{ maxHeight: '70vh', overflowY: 'scroll', maxWidth: '40vw' }}>
-        <p className={style.header}>
-          Вылеты
-          <img style={{margin: '0 0.5vw'}}src="/img/Vector111.png" alt="arrow"/>
+      <Container className={style.main}>
+        <div className={style.containerHead}>
+          <p className={style.header}>
+            Вылеты
+          <img className={style.arrow} src="/img/Vector111.png" alt="arrow" />
           SVO - JFK
           </p>
-        <p style={{ marginTop: '3vh', color: '424242', fontSize: '17px', paddingBottom: '1%' }}>Добавлено в избранное: <span style={{ color: '#1157A7', fontWeight: 'bold' }}>{count ? count.length : 0}</span> рейсов</p>
-        <List />
+          <div className={style.dateContainer}>
+            <div>
+              <p className={style.date}>{day} {month} {year} </p>
+            </div>
+            <div>
+              <img className={style.calendar} src="/img/Group9.png" alt="calendar" />
+            </div>
+          </div>
+        </div>
+        <p className={style.favorites}>Добавлено в избранное: <span className={style.count} >{count ? count.length : 0}</span> рейсов</p>
+        <div className={style.scroll}>
+          <List />
+        </div>
       </Container>
     </div>
   )

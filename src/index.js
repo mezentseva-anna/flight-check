@@ -2,23 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider, useSelector } from 'react-redux';
-import createSagaMiddleware from 'redux-saga'
-import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { rootReducer } from './redux/reducers/rootReducer';
-import rootSaga from './redux/saga/sagas';
+import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
-
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
-store.subscribe(() => {
-  
-  // window.localStorage.setItem('user',JSON.stringify(user))
-})
-
-sagaMiddleware.run(rootSaga)
+import { store } from './redux/store';
 
 ReactDOM.render(
   <Provider store={store}>

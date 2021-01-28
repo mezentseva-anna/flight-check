@@ -9,8 +9,8 @@ export default function List() {
   return (
     <div>
       <ListGroup variant="flush">
-        {flights.map(el =>
-          <ListGroup.Item><Card key={el.id} data={el.data} id={el.id} flag={el.flag} /></ListGroup.Item>
+        {flights && flights.map(el =>
+          <ListGroup.Item key={Math.random()}><Card data={el.data} id={el.id} flag={el.flag} /></ListGroup.Item>
         )}
       </ListGroup>
     </div>

@@ -1,10 +1,6 @@
 import { ADD_FLIGHT, CHANGE_FLAG } from '../actionTypes';
-const state = JSON.parse(window.localStorage.getItem('flights'));
-let preloadedState = [];
 
-if (state) preloadedState = state
-
-export const flightReducer = (state = preloadedState, action) => {
+export const flightReducer = (state=null, action) => {
   switch (action.type) {
 
     case ADD_FLIGHT:
