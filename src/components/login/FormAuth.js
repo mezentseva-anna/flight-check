@@ -15,8 +15,8 @@ export default function FormAuth() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const email = 'Sincere@april.biz';
-    const password = 'Gwenborough';
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     dispatch(startFetch({ email, password }));
     user ? setIsUser(true) : setIsUser(false);
   };
