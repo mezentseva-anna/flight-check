@@ -35,25 +35,24 @@ const fetchFlight = async () => {
     }
   })
   const dataJSON = await data.json()
-  // if (!JSON.parse(localStorage.getItem('flights')))
-  // window.localStorage.setItem('flights', JSON.stringify({ flight: dataJSON }));
   return dataJSON
 }
 
 function* flightWorker() {
-  if(!JSON.parse(localStorage.getItem('flights'))){
-  const data = yield call(fetchFlight)
-  const arr = [];
-for (let i = 0; i < 15; i += 1) {
-  arr.push({
-    data,
-    id: i,
-    flag: false
-  })
-}
-window.localStorage.setItem('flights', JSON.stringify( arr ));
+  if (!JSON.parse(localStorage.getItem('flights'))) {
+    const data = yield call(fetchFlight)
+    const arr = [];
+    for (let i = 0; i < 15; i += 1) {
+      arr.push({
+        data,
+        id: i,
+        flag: false
+      })
+    }
+    window.localStorage.setItem('flights', JSON.stringify(arr));
 
-  yield put(addFlightAC(arr))}
+    yield put(addFlightAC(arr))
+  }
   yield put(addFlightAC(JSON.parse(localStorage.getItem('flights'))))
 }
 

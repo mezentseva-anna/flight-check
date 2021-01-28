@@ -10,7 +10,7 @@ export default function List() {
     <div>
       <ListGroup variant="flush">
         {flights.map(el =>
-          <ListGroup.Item><Card key={el.id} data={el.data} id={el.id} flag={el.flag}/></ListGroup.Item>
+          <ListGroup.Item><Card key={el.id} data={el.data} id={el.id} flag={el.flag} /></ListGroup.Item>
         )}
       </ListGroup>
     </div>

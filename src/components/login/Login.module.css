@@ -1,19 +1,37 @@
 .img {
   position: absolute;
   background-image: url('./img/b4eaba0df84d2f013ec2c05b2908705b.jpeg');
-  background-size: 100%;
+  background-size: cover;
   background-position: 0 0;
   background-repeat: no-repeat;
   z-index: -100;
 }
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .img {
+    background-size: contain;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+/* // X-Large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) { ... } */
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+/* @media (min-width: 1400px) { ... }  */
 
 .rgba {
-  background:rgba(255, 255, 255, 0.6); 
+  background:rgba(255, 255, 255, 0.6);
   z-index: -50;
 }
 
 .formBg {
-  background:#FFFFFF;
+  background: #ffffff;
   padding: 50px 32px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
@@ -21,9 +39,14 @@
 }
 
 .h3 {
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .label {
-  color: 424242
+  color: #424242
+}
+.errorMsg {
+  padding-top: 5px;
+  color: #ff0000;
+  font-size: 14px;
 }

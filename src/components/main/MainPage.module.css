@@ -1,5 +1,5 @@
 .main {
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 15px rgba(88, 88, 88, 0.5);
   margin: 5% 0;
   border-radius: 10px;
 }
@@ -21,3 +21,26 @@
 	background-color: #1157A7;
 	border: 2px solid #555555;
 }
+
+
+.logout {
+  margin-top: 3vh;
+  margin-right: 2vw;
+  color: #1157A7;
+  font-size: 20px;
+}
+
+.logout:hover {
+  text-shadow: rgba(173, 173, 207, 0.582) 1px 1px 0,  rgba(173, 173, 207, 0.582) -1px -1px 0, 
+  rgba(173, 173, 207, 0.582) -1px 1px 0,  rgba(173, 173, 207, 0.582) 1px -1px 0;
+}
+
+.logoutImg {
+  margin: 0 0.5vw;
+}
+
+.header{
+  color: #424242;
+  font-size: 32px;
+}
+
