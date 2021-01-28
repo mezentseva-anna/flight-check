@@ -11,7 +11,6 @@ import { dateToString } from '../../utils/variables';
 export default function MainPage() {
   const count = useSelector(state => state.favorites)
   const dispatch = useDispatch();
-  const user = useAuth();
   const history = useHistory();
   const date = new Date(Date.now());
   const day = dateToString(date, { day: 'numeric' });

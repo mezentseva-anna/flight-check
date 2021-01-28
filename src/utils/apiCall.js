@@ -13,7 +13,7 @@ export const fetchFlight = async () => {
     const data = await fetch(flightEndpoint, {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '0933592171msh0b00e0e1eb3c5e0p18ef42jsn87400e160e5b',
+            'x-rapidapi-key': process.env.REACT_APP_API_KEY,
             'x-rapidapi-host': 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
             'useQueryString': true
         }
